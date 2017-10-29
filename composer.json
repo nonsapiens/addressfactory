@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Yomo\\AddressFactory\\": "src"
+            "Yomo\\": "src"
         }
     },
     "autoload-dev": {
