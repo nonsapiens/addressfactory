@@ -1,7 +1,8 @@
 # Address Factory
+## About
 This nifty library for Laravel 5+ intelligently generates real-world addresses for you to use in your database seeding, unit tests, or anything else.
 
-# Installation
+## Installation
 Require this package with composer using the following command:
 ```
 composer require yomo/addressfactory
@@ -12,7 +13,7 @@ After updating composer, add the service provider to the `providers` array in `c
 Yomo\AddressFactory\AddressFactoryServiceProvider::class
 ```
 
-# Usage
+## Usage
 ```php
 $f = new \Yomo\AddressFactory\AddressFactory();
 $southAfricanPoints = $f->makeSouthAfrica(4);                # Generates 4 locations within South Africa's major cities
