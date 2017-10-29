@@ -1,0 +1,70 @@
+{
+    "name": "toin0u/geocoder-laravel",
+    "description": "Geocoder Service Provider for Laravel",
+    "keywords": [
+        "laravel",
+        "geocoder",
+        "geocoding"
+    ],
+    "homepage": "http://geocoder-php.org/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mike Bronner",
+            "email": "hello@genealabs.com",
+            "homepage": "https://genealabs.com",
+            "role": "Developer, Maintainer"
+        },
+        {
+            "name": "Antoine Corcy",
+            "email": "contact@sbin.dk",
+            "homepage": "http://sbin.dk",
+            "role": "Original Creator"
+        }
+    ],
+    "require": {
+        "php-http/curl-client": "^1.7",
+        "geocoder-php/chain-provider": "^4.0",
+        "geocoder-php/geo-plugin-provider": "^4.0",
+        "geocoder-php/google-maps-provider": "^4.0",
+        "guzzlehttp/psr7": "*",
+        "illuminate/cache": "5.*",
+        "illuminate/support": "5.*",
+        "php": "^7.0",
+        "willdurand/geocoder": "^4.0"
+    },
+    "require-dev": {
+        "doctrine/dbal": "^2.5",
+        "fzaninotto/faker": "~1.4",
+        "geocoder-php/bing-maps-provider": "^4.0",
+        "geocoder-php/maxmind-binary-provider": "^4.0",
+        "laravel/laravel": "5.5.*",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.0",
+        "satooshi/php-coveralls" : "dev-master@dev",
+        "sebastian/phpcpd": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Geocoder\\Laravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\": "vendor/laravel/laravel/app/",
+            "Geocoder\\Laravel\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Geocoder\\Laravel\\Providers\\GeocoderService"
+            ]
+        }
+    },
+    "prefer-stable": true,
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}

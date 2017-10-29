@@ -1,0 +1,67 @@
+{
+    "name": "yomo/addressfactory",
+    "type": "library",
+    "description": "Creates real addresses from Google Maps, to use in database seeding, unit tests, or anything else. Supports Laravel 5+",
+    "keywords": [
+        "Yomo",
+        "AddressFactory"
+    ],
+    "homepage": "https://github.com/nonsapiens/addressfactory",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stuart Steedman",
+            "email": "stuart@yonder.co.za",
+            "homepage": "http://www.yonder.co.za",
+            "role": "Head of Development"
+        }
+    ],
+    "require": {
+        "php": "~5.6|~7.0",
+        "illuminate/support": "~5.1",
+        "toin0u/geocoder-laravel": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "~4.0||~5.0||~6.0",
+        "squizlabs/php_codesniffer": "^2.3",
+        "barryvdh/laravel-ide-helper": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yomo\\AddressFactory\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yomo\\AddressFactory\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+    
+        "post-install-cmd": [
+            "php ../../../artisan clear-compiled",
+            "php ../../../artisan route:scan",
+            "php ../../../artisan event:scan",
+            "php ../../../artisan optimize"
+        ],
+        "post-update-cmd": [
+            "php ../../../artisan clear-compiled",
+            "php ../../../artisan optimize",
+            "php ../../../artisan cache:clear"
+        ],
+        "post-create-project-cmd": [
+            "php ../../../artisan key:generate"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
