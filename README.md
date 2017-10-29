@@ -13,6 +13,12 @@ After updating composer, add the service provider to the `providers` array in `c
 Yomo\AddressFactory\AddressFactoryServiceProvider::class
 ```
 
+As this library relies on Google Maps, your Google Maps API key needs to be defined in your `.env` file:
+```
+GOOGLE_MAPS_API_KEY=abcdefghijklmnopqrstuv
+```
+If you don't have an API key (they're free), [get one here](https://developers.google.com/maps/documentation/javascript/get-api-key)
+
 ## Usage
 ```php
 $f = new \Yomo\AddressFactory\AddressFactory();
