@@ -1,7 +1,7 @@
 {
     "name": "yomo/addressfactory",
     "type": "library",
-    "description": "Creates real addresses from Google Maps, to use in database seeding, unit tests, or anything else. Supports Laravel 5+",
+    "description": "Creates real-world street addresses from Google Maps, to use in database seeding, unit tests, or anything else. Supports Laravel 5+",
     "keywords": [
         "Yomo",
         "AddressFactory"
@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": "~5.6|~7.0",
+        "php": "~7.0",
         "illuminate/support": "~5.1",
         "toin0u/geocoder-laravel": "^4.0"
     },
@@ -57,6 +57,14 @@
         ]
     },
     "extra": {
+        "laravel": {
+            "providers": [
+                "Yomo\\AddressFactory\\AddressFactoryServiceProvider"
+            ],
+            "aliases": {
+            
+            }
+        },
         "branch-alias": {
             "dev-master": "1.0-dev"
         }
