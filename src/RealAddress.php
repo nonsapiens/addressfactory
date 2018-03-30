@@ -4,6 +4,7 @@ namespace Yomo\AddressFactory;
 
 use Geocoder\Model\Bounds;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class AddressFactory
@@ -71,7 +72,7 @@ class RealAddress
 	 */
 	public function makeUsa ( $count, $locations = null )
 	{
-		return $this->make( $count, 'Usa', $locations );
+		return $this->make( $count, 'UnitedStatesOfAmerica', $locations );
 	}
 
 	/**
@@ -104,7 +105,7 @@ class RealAddress
 	 */
 	public function makeBritain ( $count, $locations = null )
 	{
-		return $this->make( $count, 'Britain', $locations );
+		return $this->make( $count, 'GreatBritain', $locations );
 	}
 
 
@@ -119,7 +120,7 @@ class RealAddress
 	public function make ( $count, $country, $locations = null )
 	{
 
-		if ( $cnfCountry = \Config::get( 'addressfactory.' . kebab_case( $country ), false ) ) {
+		if ( $cnfCountry = Config::get( 'realaddress.' . kebab_case( $country ), false ) ) {
 
 			if ( is_null( $locations ) ) $locations = $cnfCountry[ 'cities' ];
 			if ( is_string( $locations ) ) $locations = [ $locations ];
