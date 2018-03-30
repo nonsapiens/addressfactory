@@ -6,7 +6,7 @@ Using the Google Maps API, these addresses can be created using the RealAddress 
 ## Installation
 Require this package with composer using the following command:
 ```bash
-composer require yomo/realaddress
+composer require yomo/addressfactory
 ```
 
 ### Laravel 5.5 or higher
