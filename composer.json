@@ -62,7 +62,7 @@
                 "Yomo\\AddressFactory\\AddressFactoryServiceProvider"
             ],
             "aliases": {
-            
+                "RealAddress" : "Yomo\\AddressFactory\\Facades\\RealAddress"
             }
         },
         "branch-alias": {

@@ -19,7 +19,7 @@ use Illuminate\Support\Collection;
  * @method Collection   makeFrance( int $count, string | array $locations = null )
  * @method Collection   makeGermany( int $count, string | array $locations = null )
  */
-class AddressFactory
+class RealAddress
 {
 
 	/**
