@@ -54,7 +54,8 @@ You can extend RealAddress by adding additional countries in the `config/address
 RealAddress provides additional functions for Faker's `\Faker\Generator` class instance.  The code example below shows typical usage in a Factory class:
 
 
-```use Faker\Generator as Faker;
+```php
+use Faker\Generator as Faker;
 
 $factory->define( \App\Models\Business::class, function ( Faker $faker ) {
 
@@ -64,9 +65,9 @@ $factory->define( \App\Models\Business::class, function ( Faker $faker ) {
 	return [
 
 		'title'              => $faker->words(2),
-		'full_address'       => $address->formattedAddress,
+		'full_address'       => $address->getFormattedAddress(),
 		'latitude'           => $address->getCoordinates()->getLatitude(),
-		'longitude'          => $address->getCoordinates()->getLongitude
+		'longitude'          => $address->getCoordinates()->getLongitude()
 
 	];
 

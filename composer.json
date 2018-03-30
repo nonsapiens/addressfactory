@@ -1,7 +1,7 @@
 {
     "name": "yomo/addressfactory",
     "type": "library",
-    "description": "Creates real-world street addresses from Google Maps, to use in database seeding, unit tests, or anything else. Supports Laravel 5+",
+    "description": "Creates real-world street addresses from Google Maps, to use in database seeding, unit tests, or anything else. Supports Laravel 5+, and Faker",
     "keywords": [
         "Yomo",
         "AddressFactory"
