@@ -13,11 +13,6 @@ use Illuminate\Support\Collection;
  * @author      Stuart Steedman
  * @date        29 October 2017
  *
- * @method Collection   makeSouthAfrica( int $count, string | array $locations = null )
- * @method Collection   makeUsa( int $count, string | array $locations = null )
- * @method Collection   makeBritain( int $count, string | array $locations = null )
- * @method Collection   makeFrance( int $count, string | array $locations = null )
- * @method Collection   makeGermany( int $count, string | array $locations = null )
  */
 class RealAddress
 {
@@ -43,11 +38,73 @@ class RealAddress
 	}
 
 
+	/**
+	 * @param $name
+	 * @param $arguments
+	 *
+	 * @return \Illuminate\Support\Collection|\Geocoder\Model\Address[]
+	 */
 	public function __call ( $name, $arguments )
 	{
 		if ( strpos( $name, 'make' ) === 0 ) {
 			return $this->make( $arguments[ 0 ], $this->countryMapping[ substr( $name, 4, strlen( $name ) - 4 ) ], array_key_exists( 1, $arguments ) ? $arguments[ 1 ] : null );
 		}
+	}
+
+
+	/**
+	 * @param int               $count
+	 * @param null|string|array $locations
+	 *
+	 * @return \Illuminate\Support\Collection|\Geocoder\Model\Address[]
+	 */
+	public function makeSouthAfrica ( $count, $locations = null )
+	{
+		return $this->make( $count, 'SouthAfrica', $locations );
+	}
+
+	/**
+	 * @param int               $count
+	 * @param null|string|array $locations
+	 *
+	 * @return \Illuminate\Support\Collection|\Geocoder\Model\Address[]
+	 */
+	public function makeUsa ( $count, $locations = null )
+	{
+		return $this->make( $count, 'Usa', $locations );
+	}
+
+	/**
+	 * @param int               $count
+	 * @param null|string|array $locations
+	 *
+	 * @return \Illuminate\Support\Collection|\Geocoder\Model\Address[]
+	 */
+	public function makeFrance ( $count, $locations = null )
+	{
+		return $this->make( $count, 'France', $locations );
+	}
+
+	/**
+	 * @param int               $count
+	 * @param null|string|array $locations
+	 *
+	 * @return \Illuminate\Support\Collection|\Geocoder\Model\Address[]
+	 */
+	public function makeGermany ( $count, $locations = null )
+	{
+		return $this->make( $count, 'Germany', $locations );
+	}
+
+	/**
+	 * @param int               $count
+	 * @param null|string|array $locations
+	 *
+	 * @return \Illuminate\Support\Collection|\Geocoder\Model\Address[]
+	 */
+	public function makeBritain ( $count, $locations = null )
+	{
+		return $this->make( $count, 'Britain', $locations );
 	}
 
 

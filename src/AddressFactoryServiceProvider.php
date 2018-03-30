@@ -17,8 +17,8 @@ class AddressFactoryServiceProvider extends ServiceProvider
 		# Config file vendor publishing
 		$configPath = realpath( dirname( __FILE__ ) . '/../config/addressfactory.php' );
 
-		$this->publishes( [ $configPath => config_path( 'addressfactory.php' ) ], 'yomo.addressfactory' );
-		$this->mergeConfigFrom( $configPath, 'addressfactory' );
+		$this->publishes( [ $configPath => config_path( 'realaddress.php' ) ], 'yomo.realaddress' );
+		$this->mergeConfigFrom( $configPath, 'realaddress' );
 
 	}
 
