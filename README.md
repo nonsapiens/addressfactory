@@ -47,7 +47,7 @@ As standard, RealAddress supports the generating of real addresses for the follo
 * Germany 
 * South Africa
 
-You can extend RealAddress by adding additional countries in the `config/addressfactory.php` config file.  This config file also defines which cities in a given country addresses can be created for.  Additional cities can be defined here.
+You can extend RealAddress by adding additional countries in the `config/realaddress.php` config file.  This config file also defines which cities in a given country addresses can be created for.  Additional cities can be defined here.
 
 ### Faker
 
