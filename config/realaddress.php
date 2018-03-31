@@ -14,7 +14,7 @@ return [
 	],
 
 	'france' => [
-		'cities' => [ 'Paris', 'Marseilles', 'Bordeaux', 'Nice', 'Strasbourg', 'Toulouse', 'Lille', 'Lyon', 'Rouen', 'Cannes' ],
+		'cities' => [ 'Paris', 'Marseille', 'Bordeaux', 'Nice', 'Strasbourg', 'Toulouse', 'Lille', 'Lyon', 'Rouen', 'Cannes' ],
 	],
 
 	'germany' => [
