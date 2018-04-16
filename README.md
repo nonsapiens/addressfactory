@@ -46,6 +46,7 @@ As standard, RealAddress supports the generating of real addresses for the follo
 * France
 * Germany 
 * South Africa
+* Russia
 
 You can extend RealAddress by adding additional countries in the `config/realaddress.php` config file.  This config file also defines which cities in a given country addresses can be created for.  Additional cities can be defined here.
 
@@ -86,6 +87,7 @@ The ready-to-use faker functions include:
 * `germanAddress()`
 * `frenchAddress()`
 * `southAfricanAddress()`
+* `russianAddress()`
 
 If you have extended `config/realaddress.php` to include a new country, you can generate an address for it with:
 ```php
@@ -137,4 +139,4 @@ Note that the cities defined here must be identifiable to Google Maps, and shoul
 ## About the author
 
 [**Stuart Steedman**](https://www.linkedin.com/in/stuart-steedman-b612a537/) is the head of development at [Yonder Media](http://www.yonder.co.za), a South African digital media agency operating out of Pretoria.
-He specialises in PHP and Laravel development, and has been a speaker at many tech and development related conferences.
+He specialises in PHP and Laravel development, and is a speaker at tech and development related conferences.
