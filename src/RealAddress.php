@@ -30,6 +30,8 @@ class RealAddress
 		'Britain'     => 'Great Britain',
 		'France'      => 'France',
 		'Germany'     => 'Germany',
+		'Russia'      => 'Russia',
+		'Росси́я'      => 'Russia'
 	];
 
 
@@ -106,6 +108,17 @@ class RealAddress
 	public function makeBritain ( $count, $locations = null )
 	{
 		return $this->make( $count, 'GreatBritain', $locations );
+	}
+
+	/**
+	 * @param int               $count
+	 * @param null|string|array $locations
+	 *
+	 * @return \Illuminate\Support\Collection|\Geocoder\Model\Address[]
+	 */
+	public function makeRussian ( $count, $locations = null )
+	{
+		return $this->make( $count, 'Russia', $locations );
 	}
 
 

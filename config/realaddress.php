@@ -20,4 +20,8 @@ return [
 	'germany' => [
 		'cities' => [ 'Berlin', 'Munich', 'Hamburg', 'Frankfurt', 'Cologne', 'Bonn', 'Bremen', 'Nurumberg', 'Dresden', 'Dortmund', 'Stuttgart', 'Hanover' ],
 	],
+
+	'russia' => [
+		'cities' => [ 'Moscow', 'Saint Petersburg', 'Novosibirsk', 'Yekaterinburg', 'Nizhny Novgorod', 'Kazan', 'Chelyabinsk', 'Omsk', 'Samara', 'Rostov-on-Don' ],
+	]
 ];

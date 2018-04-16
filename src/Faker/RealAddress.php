@@ -46,5 +46,11 @@ class FakerRealAddress extends \Faker\Provider\Address
 		return $factory->makeUsa(1, $cities )->first();
 	}
 
+	public function russianAddress($cities = null)
+	{
+		$factory = new RealAddress();
+		return $factory->makeRussia(1, $cities )->first();
+	}
+
 
 }
