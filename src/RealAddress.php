@@ -133,6 +133,8 @@ class RealAddress
 	public function make ( $count, $country, $locations = null )
 	{
 
+		$this->addresses = collect();
+
 		if ( $cnfCountry = Config::get( 'realaddress.' . kebab_case( $country ), false ) ) {
 
 			if ( is_null( $locations ) ) $locations = $cnfCountry[ 'cities' ];
