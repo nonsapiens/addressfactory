@@ -27,7 +27,7 @@ class AddressFactoryServiceProvider extends ServiceProvider
 	{
 		$this->app->bind( Generator::class, function ( $app ) {
 
-			$faker = \Faker\Factory::create();
+			$faker = \Faker\Factory::create( config('app.faker_locale', 'en_US') );
 			$faker->addProvider( new FakerRealAddress( $faker ) );
 
 			return $faker;
