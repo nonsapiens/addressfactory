@@ -4,6 +4,8 @@ namespace Yomo\AddressFactory;
 
 use Geocoder\Model\Bounds;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -135,14 +137,14 @@ class RealAddress
 
 		$this->addresses = collect();
 
-		if ( $cnfCountry = Config::get( 'realaddress.' . kebab_case( $country ), false ) ) {
+		if ( $cnfCountry = Config::get( 'realaddress.' . Str::kebab( $country ), false ) ) {
 
 			if ( is_null( $locations ) ) $locations = $cnfCountry[ 'cities' ];
 			if ( is_string( $locations ) ) $locations = [ $locations ];
 
 			for ( $i = 0; $i < $count; $i++ ) {
 
-				$query = implode( ', ', [ array_random( $locations ), $country ] );
+				$query = implode( ', ', [ Arr::random( $locations ), $country ] );
 
 				/** @var \Geocoder\Model\Address $country */
 				$lookup = app( 'geocoder' )->geocode( $query )->get()->first();
