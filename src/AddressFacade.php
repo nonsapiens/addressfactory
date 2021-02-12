@@ -1,6 +1,6 @@
 <?php
 
-namespace Yomo\AddressFactory\Facades;
+namespace Nonsapiens\AddressFactory\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -9,7 +9,7 @@ class RealAddress extends Facade
 
 	protected static function getFacadeAccessor()
 	{
-		return 'Yomo\AddressFactory\RealAddress';
+		return 'Nonsapiens\AddressFactory\AddressFactory';
 	}
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Yomo\AddressFactory;
+namespace Nonsapiens\AddressFactory;
 
 use Faker\Generator;
 use Illuminate\Http\Request;

@@ -3,28 +3,26 @@
 This Laravel 5 library creates actual, 100% real addresses, with full address details and lat/long coordinates
 Using the Google Maps API, these addresses can be created using the RealAddress classes, and also supports Faker, so you can use RealAddress in your database seeding!
 
-## Installation
+## Installation (Laravel 8 and higher)
+Require this package with composer using the following command:
+```bash
+composer require nonsapiens/addressfactory
+```
+
+Execute:
+```
+php artisan vendor:publish --tag=nonsapiens.realaddress
+```
+
+
+### Installation (Laravel 5.x)
 Require this package with composer using the following command:
 ```bash
 composer require yomo/addressfactory
 ```
 
-### Laravel 5.5 or higher
-
 Execute:
 ```
-php artisan vendor:publish --tag=yomo.realaddress
-```
-
-
-### Laravel 5.4 or lower
-If you are running Laravel 5.4 and below, you need to add the service provider to the `providers` array in `config/app.php`
-```php
-Yomo\AddressFactory\AddressFactoryServiceProvider::class
-```
-
-Then execute:
-```bash
 php artisan vendor:publish --tag=yomo.realaddress
 ```
 
@@ -116,7 +114,7 @@ $brazilAddresses		= RealAddress::make(10, 'Brazil');						# 10 addresses for the
 Functionally, provides the same methods as the Facade above:
 
 ```php
-$f = new \Yomo\AddressFactory\RealAddress();
+$f = new \Yomo\AddressFactory\AddressFactory();
 
 $southAfricanPoints = $f->makeSouthAfrica(4);                # Generates 4 locations within South Africa's major cities
 $capeTownPoints     = $f->makeSouthAfrica(2, 'Cape Town');   # Generates 2 locations from Cape Town, South Africa
