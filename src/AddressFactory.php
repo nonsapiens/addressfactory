@@ -3,8 +3,10 @@
 namespace Nonsapiens\AddressFactory;
 
 use Geocoder\Model\Bounds;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
 
 /**
  * Class AddressFactory
@@ -17,13 +19,17 @@ use Illuminate\Support\Facades\Config;
  */
 class AddressFactory
 {
+    /** @var int  */
+    public static $rateCounter = 0;
 
     /**
      * @var \Illuminate\Support\Collection|\Geocoder\Model\Address[]
      */
     protected $addresses;
 
-
+    /**
+     * @var string[]
+     */
     protected $countryMapping = [
         'SouthAfrica' => 'South Africa',
         'Usa' => 'United States of America',
@@ -34,7 +40,9 @@ class AddressFactory
         'Росси́я' => 'Russia'
     ];
 
-
+    /**
+     * AddressFactory constructor.
+     */
     public function __construct()
     {
         $this->addresses = collect();
@@ -134,44 +142,48 @@ class AddressFactory
      *
      * @return \Illuminate\Support\Collection
      */
-    public function make(int $count, $country, $locations = null)
+    public function make(int $count, string $country, $locations = null)
     {
-
         $this->addresses = collect();
 
-        if ($cnfCountry = Config::get('realaddress.' . kebab_case($country), false)) {
+        if ($cnfCountry = Config::get('realaddress.' . Str::kebab($country), false)) {
 
             if (is_null($locations)) $locations = $cnfCountry['cities'];
             if (is_string($locations)) $locations = [$locations];
 
-            for ($i = 0; $i < $count; $i++) {
+            if (config('realaddress.rate-limiter') == -1 || self::$rateCounter <= config('realaddress.rate-limiter') ) {
+                for ($i = 0; $i < $count; $i++) {
+                    $query = implode(', ', [Arr::random($locations), $country]);
 
-                $query = implode(', ', [array_random($locations), $country]);
+                    /** @var \Geocoder\Model\Address $country */
+                    $lookup = app('geocoder')->geocode($query)->get()->first();
 
-                /** @var \Geocoder\Model\Address $country */
-                $lookup = app('geocoder')->geocode($query)->get()->first();
+                    if ($lookup->getLocality()) {
+                        /** @var \Geocoder\Model\Address $address */
+                        $address = null;
 
-                if ($lookup->getLocality()) {
-                    /** @var \Geocoder\Model\Address $address */
-                    $address = null;
+                        while (empty($address) || !$address->getStreetName() || !$address->getStreetNumber()) {
+                            $random = $this->getRandomCoordinates($lookup->getBounds());
+                            $address = $this->performLookup(... $random);
+                        }
 
-                    while (empty($address) || !$address->getStreetName() || !$address->getStreetNumber()) {
-                        $random = $this->getRandomCoordinates($lookup->getBounds());
-                        $address = $this->performLookup(... $random);
+                        $this->addresses->push($address);
+                        self::$rateCounter++;
                     }
-
-                    $this->addresses->push($address);
                 }
-
+            } else {
+                throw new \RuntimeException('Address Factory exceeded the rate limiter set');
             }
-
-
         }
 
         return $this->addresses;
     }
 
-
+    /**
+     * @param $lat
+     * @param $lng
+     * @return \Geocoder\Model\Address
+     */
     protected function performLookup($lat, $lng)
     {
         /** @var \Geocoder\Model\Address $address */
@@ -180,7 +192,10 @@ class AddressFactory
         return $address;
     }
 
-
+    /**
+     * @param Bounds $bounds
+     * @return array
+     */
     protected function getRandomCoordinates(Bounds $bounds)
     {
         $lat = $this->randomFloat(6, $bounds->getNorth(), $bounds->getSouth());
@@ -203,7 +218,6 @@ class AddressFactory
      */
     private function randomFloat($nbMaxDecimals, $min, $max)
     {
-
         if ($min > $max) {
             $tmp = $min;
             $min = $max;

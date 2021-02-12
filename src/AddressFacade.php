@@ -1,15 +1,18 @@
 <?php
 
-namespace Nonsapiens\AddressFactory\Facades;
+namespace Nonsapiens\AddressFactory;
 
 use Illuminate\Support\Facades\Facade;
 
-class RealAddress extends Facade
+class AddressFacade extends Facade
 {
 
+    /**
+     * @return string
+     */
 	protected static function getFacadeAccessor()
 	{
-		return 'Nonsapiens\AddressFactory\AddressFactory';
+		return AddressFactory::class;
 	}
 
 }
