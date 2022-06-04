@@ -1,3 +1,5 @@
+**NOTE:** _This package is for legacy Laravel only! Please use the newer [RealAddressFactory](https://github.com/nonsapiens/realaddressfactory) for more recent Laravel versions!_
+
 # RealAddress Generator
 ## About
 This Laravel 5 library creates actual, 100% real addresses, with full address details and lat/long coordinates
@@ -8,6 +10,10 @@ Require this package with composer using the following command:
 ```bash
 composer require yomo/addressfactory
 ```
+
+### Laravel 7 or higher
+Please use the updated package, [RealAddressFactory](https://github.com/nonsapiens/realaddressfactory).
+This specific package is for legacy Laravel only!
 
 ### Laravel 5.5 or higher
 
